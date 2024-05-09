@@ -18,7 +18,7 @@ const useLogin = () => {
        navigate('/homepage')
     })
       .catch((error) => {
-        console.error(error);
+        console.log(error)
         setErr(error.response.data);
       });
   };

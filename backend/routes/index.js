@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const authRoute = require('./authRoute')
 const productRoute = require('./productRoute')
-const authenUser = require('../middlewares/isAuthenticated')
+const authenUser = require('../middlewares/authenUser')
 
 router.use(authRoute)
 router.use(authenUser)

@@ -4,6 +4,20 @@ const axios = axiosInstance.create({
     baseURL: 'http://localhost:8000',
     withCredentials: true
 })
-// will add interceptor for response later
+
+axios.interceptors.response.use(response => response, async err => {
+    const orignialRequest = err.config
+    if(err.response.status === 403 && orignialRequest.url !== '/access-token') {
+        try {
+            await axios.get('/access-token')
+            return axios(orignialRequest)
+            
+        } catch (error) {
+            console.error(error)
+            return Promise.reject()
+        }
+    }
+    return Promise.reject()
+})
 
 export default axios

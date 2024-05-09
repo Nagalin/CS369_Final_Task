@@ -7,13 +7,18 @@ import Addproducts from './pages/addProducts/AddProducts'
 import ProductDetails from './pages/productDetails/ProductDetails'
 
 import {Routes,Route} from 'react-router-dom'
+import Proctected from './components/Proctected'
 const App = () => {
   return (
-  <Routes> 
+  <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/login" element={<Login />} />
+
+    <Route element={<Proctected/>}>
+
     <Route path="/addProducts" element={<Addproducts />} />
     <Route path="/productDetails" element={<ProductDetails />} />
+    </Route>
   </Routes>
   )
 }

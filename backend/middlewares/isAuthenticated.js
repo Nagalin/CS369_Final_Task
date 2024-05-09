@@ -2,7 +2,7 @@ const extractTokenFromHeader = require('../utils/extractTokenFromHeader')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
-const isAuthenticated = (req, res, next) => {
+const authenUser = (req, res, next) => {
     const ACCESS_TOKEN_KEY = process.env.ACCESS_TOKEN_KEY
     const cookiesHeader = req.headers.cookie
     if (!cookiesHeader) return res.status(403).send('Missing cookies header')
@@ -18,4 +18,4 @@ const isAuthenticated = (req, res, next) => {
     })
 }
 
-module.exports = isAuthenticated
+module.exports = authenUser

@@ -1,7 +1,8 @@
 const router = require('express').Router()
-const {loginController,getNewAccessToken} = require('../controllers/authController')
+const {login, logout, getNewAccessToken} = require('../controllers/authController')
 
-router.post('/login', loginController)
+router.post('/login', login)
+router.post('/logout',logout)
 router.get('/access-token',getNewAccessToken)
 
 module.exports = router

@@ -8,7 +8,7 @@ require('dotenv').config()
 //@description      authenticate user's credential
 //@route            POST /login
 //@access           public
-const loginController = async (req, res) => {
+const login = async (req, res) => {
     const { username, password } = req.body;
     if (!username || !password) 
         return res.status(400).send('Username and password are required');
@@ -36,6 +36,15 @@ const loginController = async (req, res) => {
     }
 }
 
+//@description      authenticate user's credential
+//@route            POST /login
+//@access           private
+const logout = (req,res) => {
+    res.cookie('access-token', '', { expires: new Date(0) })
+    res.cookie('refresh-token', '', { expires: new Date(0) }).end()
+
+}
+
 //@description      create new access token with valid refresh token
 //@route            GET /access-token
 //@access           public
@@ -55,4 +64,4 @@ const getNewAccessToken = async (req,res) => {
     })
 }
 
-module.exports = {loginController,getNewAccessToken}
+module.exports = {login,getNewAccessToken, logout}

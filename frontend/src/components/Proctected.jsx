@@ -1,21 +1,23 @@
 import React, { useState } from 'react'
 import axios from '../lib/axios'
 import { Outlet, useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
+
 const Proctected = () => {
-    const [isLoggedIn,setIsLoggedIn] = useState(false)
+   const {auth,setAuth} = useAuth()
     const [isLoading, setIsloading] = useState(true)
     const navigate = useNavigate()
 
     axios.get('/auth')
     .then(() => {
-        setIsLoggedIn(true)
+        setAuth(true)
     })
     .catch(err => console.error(err))
     .finally(() => setIsloading(false))
 
     if(isLoading) return null
-    if(!isLoading && !isLoggedIn) navigate('/login')
-    if(!isLoading && isLoggedIn) return <Outlet/>
+    if(!isLoading && !auth) navigate('/login')
+    if(!isLoading && auth) return <Outlet/>
   
 }
 

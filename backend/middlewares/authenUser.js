@@ -1,5 +1,5 @@
-const extractTokenFromHeader = require('../utils/extractTokenFromHeader')
 const jwt = require('jsonwebtoken')
+const extractTokenFromHeader = require('../utils/extractTokenFromHeader')
 require('dotenv').config()
 
 const authenUser = (req, res, next) => {

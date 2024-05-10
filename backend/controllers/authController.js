@@ -1,6 +1,6 @@
-const sql = require('../configs/database')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const sql = require('../configs/database')
 const generateToken = require('../utils/generateToken')
 const extractTokenFromHeader = require('../utils/extractTokenFromHeader')
 require('dotenv').config()
@@ -42,7 +42,6 @@ const login = async (req, res) => {
 const logout = (req,res) => {
     res.cookie('access-token', '', { expires: new Date(0) })
     res.cookie('refresh-token', '', { expires: new Date(0) }).end()
-
 }
 
 //@description      create new access token with valid refresh token

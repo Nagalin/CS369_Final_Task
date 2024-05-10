@@ -31,12 +31,11 @@ const addProduct = async (req, res) => {
             .input('detail', sql.VarChar, detail)
             .input('material', sql.VarChar, material)
             .query(`INSERT INTO products (name, pictureName, price, detail , material)
-            OUTPUT INSERTED.id
+                    OUTPUT INSERTED.id
                     VALUES (@name, @pictureName, @price, @detail, @material)`
             )
-            const productId = result.recordset[0].id; // Capture the inserted product ID
+            const productId = result.recordset[0].id
 
-            // Insert into size table
             await pool.request()
                 .input('productId', sql.Int, productId)
                 .input('width', sql.Decimal, width)
@@ -76,10 +75,10 @@ const fetchProduct =  async (req, res) => {
 }
 
 //@description      fetch the info of corresponding product
-//@route            GET/:productId /product
+//@route            GET /product/:id
 //@access           public
 const fetchProductWithId = async (req, res) => {
-    const productId = req.params.productId
+    const productId = req.params.id
     try {
         const pool = await sql.connect()
         const result = await pool.request()
@@ -94,13 +93,14 @@ const fetchProductWithId = async (req, res) => {
                 s.width,
                 s.height,
                 s.length,
-                s.unit FROM products JOIN size s ON ${productId} = products.id AND 
-                ${productId} = s.productId;
+                s.unit 
+                FROM products JOIN size s ON @productId = products.id AND 
+                @productId = s.productId;
         `)
 
-        result.recordsets.length === 0 ?  
-        res.status(404).send('No info found on this product') :
-        res.send(result.recordsets)
+       return result.recordset.length === 0 ?
+       res.status(404).send('No info found on this product'):
+       res.send(result.recordset[0])
     }
      catch (error) {
         console.error(error)

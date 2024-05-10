@@ -1,10 +1,14 @@
 const router = require('express').Router()
 const upload = require('../configs/multer')
-const { addProduct, fetchProduct, fetchProductWithId } = require('../controllers/productController')
+const { 
+    addProduct, 
+    fetchProduct, 
+    fetchProductWithId 
+} = require('../controllers/productController')
 const authenUser = require('../middlewares/authenUser')
 
 router.post('/product', authenUser, upload.single('pictureName'), addProduct)
 router.get('/product', fetchProduct)
-router.get('/product/:productId',fetchProductWithId)
+router.get('/product/:id',fetchProductWithId)
 
 module.exports = router

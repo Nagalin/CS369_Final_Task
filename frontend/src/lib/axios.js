@@ -15,9 +15,9 @@ axios.interceptors.response.use(response => response, async err =>{
             await axios.get('/access-token')
             return axios(orignialRequest)
             
-        } catch (error) {
-            console.error(error)
-            return Promise.reject(error)
+        } catch (tokenError) {
+            console.error(tokenError)
+            return Promise.reject(tokenError)
         }
     }
     return Promise.reject(err)

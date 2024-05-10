@@ -1,7 +1,5 @@
 const extractTokenFromHeader = (tokenType, cookiesHeader) => {
     const cookies = cookiesHeader.split('; ')
-   
-
     let token = ''
 
     cookies.map(currCookie => {

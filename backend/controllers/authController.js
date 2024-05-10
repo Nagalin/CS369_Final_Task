@@ -37,7 +37,7 @@ const login = async (req, res) => {
 }
 
 //@description      authenticate user's credential
-//@route            POST /login
+//@route            POST /logout
 //@access           private
 const logout = (req,res) => {
     res.cookie('access-token', '', { expires: new Date(0) })

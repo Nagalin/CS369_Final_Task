@@ -11,10 +11,15 @@ const addProduct = async (req, res) => {
         detail, 
         material,
         width,
-        height,length,unit
+        height,
+        length,
+        unit
     } = req.body
 
-    if(!name || !pictureName || !price || !detail || !material )
+    if
+    (!name || !pictureName || !price || !detail || !material || !width || !height
+     || !length || !unit 
+    )
         return res.status(400).send('Missing product info')
 
     try {
@@ -49,4 +54,31 @@ const addProduct = async (req, res) => {
     }
 }
 
-module.exports = {addProduct}
+//@description      fetch all the products info
+//@route            POST /product
+//@access           public
+const fetchProduct =  async (req, res) => {
+    try {
+        const pool = await sql.connect()
+        const result = await pool.request()
+        .query(`SELECT 
+                products.id,
+                products.name,
+                products.pictureName,
+                products.price,
+                products.detail,
+                products.material,
+                s.productId,
+                s.width,
+                s.height,
+                s.length,
+                s.unit
+                FROM products LEFT JOIN size s ON products.id = s.productId;`)
+        res.send(result.recordsets)
+    }
+     catch (error) {
+        console.error(error)
+        res.status(500).send('Internal server erorr')
+    }
+}
+module.exports = {addProduct, fetchProduct}

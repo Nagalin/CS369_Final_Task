@@ -55,14 +55,36 @@ const addProduct = async (req, res) => {
 }
 
 //@description      fetch all the products info
-//@route            POST /product
+//@route            GET /product
 //@access           public
 const fetchProduct =  async (req, res) => {
     try {
         const pool = await sql.connect()
         const result = await pool.request()
         .query(`SELECT 
-                products.id,
+                id,
+                name,
+                pictureName,
+                price
+                FROM products`)
+        res.send(result.recordsets)
+    }
+     catch (error) {
+        console.error(error)
+        res.status(500).send('Internal server erorr')
+    }
+}
+
+//@description      fetch the info of corresponding product
+//@route            GET/:productId /product
+//@access           public
+const fetchProductWithId = async (req, res) => {
+    const productId = req.params.productId
+    try {
+        const pool = await sql.connect()
+        const result = await pool.request()
+        .input('id', sql.VarChar, productId)
+        .query(`SELECT    products.id,   
                 products.name,
                 products.pictureName,
                 products.price,
@@ -72,13 +94,18 @@ const fetchProduct =  async (req, res) => {
                 s.width,
                 s.height,
                 s.length,
-                s.unit
-                FROM products LEFT JOIN size s ON products.id = s.productId;`)
+                s.unit FROM products JOIN size s ON ${productId} = products.id AND 
+                ${productId} = s.productId;
+        `)
+
+        result.recordsets.length === 0 ?  
+        res.status(404).send('No info found on this product') :
         res.send(result.recordsets)
     }
      catch (error) {
         console.error(error)
         res.status(500).send('Internal server erorr')
     }
+
 }
-module.exports = {addProduct, fetchProduct}
+module.exports = {addProduct, fetchProduct,fetchProductWithId}

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {formatCurrency} from '../../utils/formatCurrency'
 
 export const Product = ({id, name, pictureName, price}) => {
  const navigate = useNavigate()
@@ -11,14 +12,14 @@ export const Product = ({id, name, pictureName, price}) => {
         <p>
           <b>{name}</b>
         </p>
-        <p> ฿{price}</p>
+        <p> {formatCurrency(price)}</p>
       </div>
        <button onClick={() => {
           const data = {
             id
           };
          const queryParams = new URLSearchParams(data).toString();
-        navigate(`/productDetails?${queryParams}`)
+        navigate(`/product-details?${queryParams}`)
        } }>
         Detail
       </button>

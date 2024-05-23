@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import axios from '../lib/axios';
 import { useAuth } from '../contexts/AuthContext';
 import Swal from 'sweetalert2';
+
 function Navbar() {
   const { auth, setAuth } = useAuth()
   const navigate = useNavigate()
@@ -15,7 +16,7 @@ function Navbar() {
            
            
             { auth?  
-              <Nav.Link to="/addProducts" as={NavLink} >Add Products</Nav.Link> : 
+              <Nav.Link to="/add-products" as={NavLink} >Add Products</Nav.Link> : 
               <Nav.Link to="/login" as={NavLink} >Please log-in to add product</Nav.Link>
             }
            

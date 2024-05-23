@@ -13,7 +13,6 @@ const App = () => {
   return (
     <AuthContextProvider>
       <Routes>
-
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
@@ -23,9 +22,9 @@ const App = () => {
 
           <Route element={<PrivateRoutes />}>
             <Route path="/addProducts" element={<Addproducts />} />
-            </Route>
           </Route>
-          
+
+        </Route>
       </Routes>
     </AuthContextProvider>
   );

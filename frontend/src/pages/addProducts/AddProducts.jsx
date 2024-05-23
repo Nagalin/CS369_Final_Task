@@ -11,7 +11,7 @@ const AddProducts = () => {
     handleFileChange,handleAddProduct  } 
   = useAddProduct();
   return (
-      <div>
+      <Form onSubmit={ handleAddProduct}>
         <center>
           <h2 className='mt-5'>Add your Product</h2>
           <p>Please insert your Product infomations below</p>
@@ -115,11 +115,11 @@ const AddProducts = () => {
               type="submit"
               style={{ width: "80%", height: "80%",fontSize:"140%",margin: 'auto'}}
               variant="primary"
-              onClick={handleAddProduct}
+             
             >
               Add My Product
             </Button>
-      </div>
+      </Form>
   )
 }
 export default AddProducts

@@ -15,7 +15,14 @@ const addProduct = async (req, res) => {
         length,
         unit
     } = req.body
-
+    console.log( name, 
+        price, 
+        detail, 
+        material,
+        width,
+        height,
+        length,
+        unit)
     if
     (!name || !pictureName || !price || !detail || !material || !width || !height
      || !length || !unit 
@@ -45,7 +52,7 @@ const addProduct = async (req, res) => {
                 .query(`INSERT INTO size (productId, width, height, length, unit)
                         VALUES (@productId, @width, @height, @length, @unit);`);
 
-            res.status(201).send('Your product have been created')
+            return res.status(201).send('Your product have been created')
     
     } catch (err) {
         console.error(err)
@@ -94,8 +101,8 @@ const fetchProductWithId = async (req, res) => {
                 s.height,
                 s.length,
                 s.unit 
-                FROM products JOIN size s ON @productId = products.id AND 
-                @productId = s.productId;
+                FROM products JOIN size s ON @id = products.id AND 
+                @id = s.productId;
         `)
 
        return result.recordset.length === 0 ?

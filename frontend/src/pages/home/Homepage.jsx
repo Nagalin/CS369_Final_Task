@@ -6,7 +6,8 @@ const Homepage = () => {
   return (
     <div className="shop">
     <div className="shopTitle">
-      <h1>PedroTech Shop</h1>
+      <h1>Stock Lists</h1>
+      <h3>Please Check your Items Below</h3><br/>
     </div>
 
     <div className="products">

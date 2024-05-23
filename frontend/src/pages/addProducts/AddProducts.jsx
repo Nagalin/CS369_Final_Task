@@ -1,6 +1,15 @@
 import React from 'react'
+import useAddProduct from './useAddProduct';
 import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap'
+const errorStyle = {
+  width: '325px',
+  marginTop: '10px',
+}
 const AddProducts = () => {
+  
+  const { name, price, detail, material, width, height, length, unit, err,
+    handleFileChange,handleAddProduct  } 
+  = useAddProduct();
   return (
       <div>
         <center>
@@ -17,6 +26,7 @@ const AddProducts = () => {
             <Form.Control
               type="text"
               placeholder="name"
+              ref={name}
             />
           </FloatingLabel>
           </Col>
@@ -27,8 +37,9 @@ const AddProducts = () => {
             className=" mb-3"
           >
             <Form.Control
-              type="text"
+              type="number"
               placeholder="price"
+              ref={price}
             />
           </FloatingLabel>
           </Col>
@@ -41,6 +52,7 @@ const AddProducts = () => {
             <Form.Control
               type="text"
               placeholder="materials"
+              ref={material}
             />
           </FloatingLabel>
           </Col>
@@ -53,7 +65,7 @@ const AddProducts = () => {
               label="Length"
               className="mb-3"
             >
-              <Form.Control type="text" placeholder=""/>
+              <Form.Control type="number" placeholder="" ref={length}/>
             </FloatingLabel>
           </Col>
           <Col>
@@ -62,7 +74,7 @@ const AddProducts = () => {
               label="Width"
               className="mb-3"
             >
-              <Form.Control type="text" placeholder=""/>
+              <Form.Control type="number" placeholder="" ref={width}/>
             </FloatingLabel>
           </Col>
           <Col>
@@ -71,7 +83,7 @@ const AddProducts = () => {
               label="Height"
               className="mb-3"
             >
-              <Form.Control type="text" placeholder=""/>
+              <Form.Control type="number" placeholder="" ref={height}/>
             </FloatingLabel>
           </Col>
           <Col>
@@ -80,29 +92,34 @@ const AddProducts = () => {
               label="Unit (e.g. mm. cm. in.)"
               className="mb-3"
             >
-              <Form.Control type="text" placeholder=""/>
+              <Form.Control type="text" placeholder="" ref={unit}/>
             </FloatingLabel>
           </Col>
         </Row>
             {" "}
             <Form.Label>Product Details</Form.Label>
-        <Form.Control className="mb-3" as="textarea" rows={3} />
+        <Form.Control className="mb-3" as="textarea" rows={3} ref={detail} />
         
         <Form.Control style={{ width: "80%", height: "80%",fontSize:"140%",margin: 'auto'}} 
         className="mt-3 d-flex  justify-content-center align-items-center w-50" type="file" 
-        placeholder=""/>
-
+        placeholder="" onChange={handleFileChange} />
+        { err && 
+                <div className="position-absolute start-50 translate-middle-x text-center alert alert-danger"
+                style={errorStyle}>
+                    {err}
+                </div>
+                }
             {" "}
             <Button
               className="mt-3 d-flex  justify-content-center align-items-center"
-              type="summit"
+              type="submit"
               style={{ width: "80%", height: "80%",fontSize:"140%",margin: 'auto'}}
               variant="primary"
+              onClick={handleAddProduct}
             >
               Add My Product
             </Button>
       </div>
   )
 }
-
 export default AddProducts

@@ -1,8 +1,13 @@
-import React from 'react'
-import { PRODUCTS } from './products.js'
+import React, { useEffect } from 'react'
 import {Product} from './product.jsx'
 import "./Homepage.css";
+import useFetch from '../../hooks/useFetch.js';
+
 const Homepage = () => {
+  const [data,err] = useFetch('/product')
+  useEffect(() => {
+    console.log(data)
+  })
   return (
     <div className="shop">
     <div className="shopTitle">
@@ -11,8 +16,14 @@ const Homepage = () => {
     </div>
 
     <div className="products">
-      {PRODUCTS.map((product) => (
-        <Product data={product} />
+      {data.map((product) => (
+       
+        <Product 
+          id={product.id} 
+          name={product.name} 
+          price={product.price} 
+          pictureName={product.pictureName} 
+        />
       ))}
     </div>
   </div>

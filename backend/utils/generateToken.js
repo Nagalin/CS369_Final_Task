@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 const generateToken = (tokenType, id) => {
-    const expirationTime = tokenType === 'accessToken' ? '10s': '2d'
+    const expirationTime = tokenType === 'accessToken' ? '15m': '1d'
     const SECRET_KEY = tokenType === 'accessToken'? 
     process.env.ACCESS_TOKEN_KEY : process.env.REFRESH_TOKEN_KEY
 

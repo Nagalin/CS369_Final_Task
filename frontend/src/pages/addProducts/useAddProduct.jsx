@@ -33,11 +33,16 @@ const useAddProduct = () => {
       axios
         .post("/product",formData)
         .then(response=>{
-        Swal.fire(response.data);
+          Swal.fire({
+           
+            icon: "success",
+            title: response.data,
+            showConfirmButton: true,
+          });
       })
         .catch((error) => {
           console.error(error)
-        //   setErr(error.response.data);
+          // setErr(error.response.data);
         });
     };
     return { name, price, detail, material, width, height, length, 

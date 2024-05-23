@@ -4,31 +4,40 @@ import useFetch from '../../hooks/useFetch'
 import {useLocation} from 'react-router-dom'
 
 const ProductDetails = () => {
-  const location = useLocation()
+  const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get('id');
-  const [data] = useFetch(`/product/${id}`)
+  const [data, err] = useFetch(`/product/${id}`);
 
   useEffect(() => {
-    console.log(data)
-  })
-
-  
+    console.log(data);
+  }, [data]);
 
   return (
     <Container className="d-flex h-100 justify-content-center align-items-center mt-4">
-      <Card>
-        <Card.Header>Header</Card.Header>
+      <Card style={{ width: '50%' }}>
+        <Card.Header>{data.name}</Card.Header>
+        <div className="d-flex justify-content-center">
+          <Card.Img 
+            style={{ 
+              width: '70%', 
+              height: 'auto', 
+              objectFit: 'cover',
+              margin: '20px' 
+            }}  
+            src={`http://localhost:8000/${data.pictureName}`} 
+          />
+        </div>
         <Card.Body>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <b>Description:</b> Lorem ipsum dolor sit amet consectetur
+              <b>Description:</b> {data.detail}
             </ListGroup.Item>
             <ListGroup.Item>
-              <b>Size: </b> 10 x 15 x 30
+              <b>Size: </b> {data.width} {data.unit}. x {data.length} {data.unit}. x {data.height} {data.unit}.
             </ListGroup.Item>
             <ListGroup.Item>
-              <b>Material: </b>vibranium
+              <b>Material: </b> {data.material}
             </ListGroup.Item>
           </ListGroup>
         </Card.Body>

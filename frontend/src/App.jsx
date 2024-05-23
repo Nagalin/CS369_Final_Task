@@ -13,11 +13,10 @@ const App = () => {
   return (
     <AuthContextProvider>
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
         <Route element={<Navbar />}>
-          <Route path="/homepage" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/productDetails" element={<ProductDetails />} />
 
           <Route element={<PrivateRoutes />}>

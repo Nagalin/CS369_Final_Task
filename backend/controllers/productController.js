@@ -73,7 +73,7 @@ const fetchProduct =  async (req, res) => {
                 pictureName,
                 price
                 FROM products`)
-        res.send(result.recordsets)
+        res.send(result.recordset)
     }
      catch (error) {
         console.error(error)

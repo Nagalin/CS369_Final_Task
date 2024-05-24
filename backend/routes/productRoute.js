@@ -9,6 +9,6 @@ const authenUser = require('../middlewares/authenUser')
 
 router.post('/product', authenUser, upload.single('pictureName'), addProduct)
 router.get('/product', fetchProduct)
-router.get('/product/:id',fetchProductWithId)
+router.get('/product/:id', fetchProductWithId)
 
 module.exports = router

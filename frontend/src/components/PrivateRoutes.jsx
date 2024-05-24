@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import axios from '../lib/axios'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { useAuth } from '../contexts/AuthContext'
+import axios from '../lib/axios'
+import { useAuthContext } from '../contexts/AuthContext'
 
 const PrivateRoutes = () => {
-   const {auth,setAuth} = useAuth()
+   const { auth, setAuth } = useAuthContext()
     const [isLoading, setIsloading] = useState(true)
     const navigate = useNavigate()
 

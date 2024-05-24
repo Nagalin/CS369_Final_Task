@@ -15,14 +15,7 @@ const addProduct = async (req, res) => {
         length,
         unit
     } = req.body
-    console.log( name, 
-        price, 
-        detail, 
-        material,
-        width,
-        height,
-        length,
-        unit)
+    
     if
     (!name || !pictureName || !price || !detail || !material || !width || !height
      || !length || !unit 
@@ -50,7 +43,8 @@ const addProduct = async (req, res) => {
                 .input('length', sql.Decimal, length)
                 .input('unit', sql.VarChar, unit)
                 .query(`INSERT INTO size (productId, width, height, length, unit)
-                        VALUES (@productId, @width, @height, @length, @unit);`);
+                        VALUES (@productId, @width, @height, @length, @unit);`
+                )
 
             return res.status(201).send('Your product have been created')
     
@@ -90,7 +84,8 @@ const fetchProductWithId = async (req, res) => {
         const pool = await sql.connect()
         const result = await pool.request()
         .input('id', sql.VarChar, productId)
-        .query(`SELECT    products.id,   
+        .query(`SELECT    
+                products.id,   
                 products.name,
                 products.pictureName,
                 products.price,
@@ -101,9 +96,10 @@ const fetchProductWithId = async (req, res) => {
                 s.height,
                 s.length,
                 s.unit 
-                FROM products JOIN size s ON @id = products.id AND 
-                @id = s.productId;
-        `)
+                FROM products JOIN size s ON 
+                @id = products.id AND 
+                @id = s.productId`
+        )
 
        return result.recordset.length === 0 ?
        res.status(404).send('No info found on this product'):
@@ -115,4 +111,5 @@ const fetchProductWithId = async (req, res) => {
     }
 
 }
-module.exports = {addProduct, fetchProduct,fetchProductWithId}
+
+module.exports = { addProduct, fetchProduct,fetchProductWithId }

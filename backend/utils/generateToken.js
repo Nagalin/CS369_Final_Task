@@ -6,7 +6,7 @@ const generateToken = (tokenType, id) => {
     const SECRET_KEY = tokenType === 'accessToken'? 
     process.env.ACCESS_TOKEN_KEY : process.env.REFRESH_TOKEN_KEY
 
-    const token = jwt.sign({id},SECRET_KEY,{expiresIn: expirationTime})
+    const token = jwt.sign({ id }, SECRET_KEY,{ expiresIn: expirationTime })
     return token
 }
 

@@ -5,7 +5,6 @@ const authenUser = require('../middlewares/authenUser')
 
 router.use(authRoute)
 router.use(productRoute)
-router.use(authenUser)
-router.get('/auth',(req,res) => res.status(200).end())
+router.get('/auth', authenUser, (req,res) => res.status(200).end())
 
 module.exports = router

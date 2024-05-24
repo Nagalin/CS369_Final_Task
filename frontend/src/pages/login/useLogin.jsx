@@ -1,13 +1,14 @@
-import { FormEvent, useRef, useState } from "react";
-import axios from "../../lib/axios";
+import { useRef, useState } from "react"
+import axios from "../../lib/axios"
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext"
+
 const useLogin = () => {
-  const username = useRef(); //พวก input element ใน feature ที่จะส่งไปหลังบ้าน
+  const username = useRef()
   const password = useRef();
   const navigate = useNavigate()
-  const [err, setErr] = useState("");
-  const {setAuth} = useAuth()
+  const [err, setErr] = useState("")
+  const { setAuth } = useAuthContext()
 
   const handleLogin = e => {
     e.preventDefault()
@@ -22,9 +23,10 @@ const useLogin = () => {
     })
       .catch((error) => {
         console.log(error)
-        setErr(error.response.data);
-      });
-  };
-  return { username, password,err,handleLogin };
-};
+        setErr(error.response.data)
+      })
+  }
+
+  return { username, password, err, handleLogin }
+}
 export default useLogin

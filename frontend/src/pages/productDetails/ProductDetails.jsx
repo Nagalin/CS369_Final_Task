@@ -4,10 +4,10 @@ import useFetch from "../../hooks/useFetch"
 import { useLocation } from "react-router-dom"
 
 const ProductDetails = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const id = queryParams.get("id");
-  const [data, error] = useFetch(`/product/${id}`);
+  const location = useLocation()
+  const queryParams = new URLSearchParams(location.search)
+  const id = queryParams.get("id")
+  const [data, error] = useFetch(`/product/${id}`)
 
   return (
     <Container className="d-flex h-100 justify-content-center align-items-center mt-4">
@@ -25,7 +25,7 @@ const ProductDetails = () => {
                 objectFit: "cover",
                 margin: "20px",
               }}
-              src={`http://localhost:8000/${data.pictureName}`}
+              src={`${import.meta.env.VITE_TARGET_URL}/${data.pictureName}`}
             />
           </div>
 
@@ -48,7 +48,7 @@ const ProductDetails = () => {
         </Card>
       )}
     </Container>
-  );
-};
+  )
+}
 
-export default ProductDetails;
+export default ProductDetails

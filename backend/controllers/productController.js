@@ -71,7 +71,7 @@ const fetchProduct =  async (req, res) => {
     }
      catch (error) {
         console.error(error)
-        res.status(500).send('Internal server erorr')
+        res.status(500).send('Internal server error')
     }
 }
 
@@ -107,7 +107,7 @@ const fetchProductWithId = async (req, res) => {
     }
      catch (error) {
         console.error(error)
-        res.status(500).send('Internal server erorr')
+        res.status(500).send('Internal server error')
     }
 
 }

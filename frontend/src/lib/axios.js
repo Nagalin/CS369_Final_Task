@@ -1,7 +1,7 @@
 import axiosLib from "axios"
 
 const axios = axiosLib.create({
-  baseURL: "http://localhost:8000",
+  baseURL:  import.meta.env.VITE_TARGET_URL,
   withCredentials: true,
 })
 
@@ -15,8 +15,10 @@ axios.interceptors.response.use(response => response, async (err) => {
       orignialRequest._retry = true
 
       try {
+        
         await axios.get("/access-token")
         return axios(orignialRequest)
+
       } catch (tokenError) {
         console.error(tokenError)
         return Promise.reject(tokenError)

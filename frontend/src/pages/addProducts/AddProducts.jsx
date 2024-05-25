@@ -1,6 +1,6 @@
 import React from "react"
 import useAddProduct from "./useAddProduct"
-import { Button, Col, FloatingLabel, Form, Row } from "react-bootstrap"
+import { Alert, Button, Col, FloatingLabel, Form, Row } from "react-bootstrap"
 
 const errorStyle = {
   width: "325px",
@@ -36,7 +36,7 @@ const AddProducts = () => {
             label="Name"
             className=" mb-3"
           >
-            <Form.Control type="text" placeholder="name" ref={name} />
+            <Form.Control required type="text" placeholder="name" ref={name} />
           </FloatingLabel>
         </Col>
 
@@ -46,7 +46,7 @@ const AddProducts = () => {
             label="price (THB)"
             className=" mb-3"
           >
-            <Form.Control type="number" placeholder="price" ref={price} />
+            <Form.Control required type="number" placeholder="price" ref={price} />
           </FloatingLabel>
         </Col>
 
@@ -56,7 +56,7 @@ const AddProducts = () => {
             label="Materials"
             className=" mb-3"
           >
-            <Form.Control type="text" placeholder="materials" ref={material} />
+            <Form.Control required type="text" placeholder="materials" ref={material} />
           </FloatingLabel>
         </Col>
 
@@ -70,7 +70,7 @@ const AddProducts = () => {
             label="Length"
             className="mb-3"
           >
-            <Form.Control type="number" placeholder="" ref={length} />
+            <Form.Control required type="number" placeholder="" ref={length} />
           </FloatingLabel>
         </Col>
 
@@ -80,7 +80,7 @@ const AddProducts = () => {
             label="Width"
             className="mb-3"
           >
-            <Form.Control type="number" placeholder="" ref={width} />
+            <Form.Control required type="number" placeholder="" ref={width} />
           </FloatingLabel>
 
         </Col>
@@ -91,7 +91,7 @@ const AddProducts = () => {
             label="Height"
             className="mb-3"
           >
-            <Form.Control type="number" placeholder="" ref={height} />
+            <Form.Control required type="number" placeholder="" ref={height} />
           </FloatingLabel>
         </Col>
 
@@ -101,14 +101,15 @@ const AddProducts = () => {
             label="Unit (e.g. mm. cm. in.)"
             className="mb-3"
           >
-            <Form.Control type="text" placeholder="" ref={unit} />
+            <Form.Control required type="text" placeholder="" ref={unit} />
           </FloatingLabel>
         </Col>
 
       </Row>{" "}
       <Form.Label>Product Details</Form.Label>
-      <Form.Control className="mb-3" as="textarea" rows={3} ref={detail} />
+      <Form.Control required className="mb-3" as="textarea" rows={3} ref={detail} />
       <Form.Control
+        required
         style={{
           width: "80%",
           height: "80%",
@@ -122,11 +123,11 @@ const AddProducts = () => {
       />
 
       {err && (
-        <div
-          className="position-absolute start-50 translate-middle-x text-center alert alert-danger"
-          style={errorStyle}
-        >
+        <div className="d-flex justify-content-center">
+
+        <Alert variant="danger" className="mt-4">
           {err}
+        </Alert>
         </div>
       )}{" "}
       

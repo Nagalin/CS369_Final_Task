@@ -15,7 +15,7 @@ export const Product = ({ id, name, pictureName, price }) => {
 
   return (
     <div className="product">
-      <img src={`http://localhost:8000/${pictureName}`} />
+      <img src={`${import.meta.env.VITE_TARGET_URL}/${data.pictureName}`} />
       <div className="description">
         <p>
           <b>{name}</b>

@@ -43,7 +43,7 @@ const AddProducts = () => {
         <Col>
           <FloatingLabel
             controlId="floatingInput"
-            label="price (THB)"
+            label="Price (USD)"
             className=" mb-3"
           >
             <Form.Control required type="number" placeholder="price" ref={price} />

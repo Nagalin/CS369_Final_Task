@@ -39,12 +39,11 @@ Make sure you have the following installed:
     `# Install frontend dependencies
     cd frontend
     npm install
-    # or yarn install
     
     # Install backend dependencies
     cd ../backend
     npm install
-    # or yarn install` 
+   
     
 
 ### Running the Application

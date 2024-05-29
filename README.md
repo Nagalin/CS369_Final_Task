@@ -37,7 +37,7 @@ Make sure you have the following installed:
     
     Copy code
     
-    `# Install frontend dependencies`
+    `# Install frontend dependencies` <br />
     `cd frontend` <br/>
    ` npm install` <br />
     

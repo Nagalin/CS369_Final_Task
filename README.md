@@ -28,7 +28,7 @@ Make sure you have the following installed:
     
     Copy code
     
-    `git clone https://github.com/Nagalin/CS369_Final_Task.git`
+    `git clone https://github.com/Nagalin/CS369_Final_Task.git` <br/>
     ` cd CS369_Final_Task` 
     
 2.  Install dependencies for both the frontend and backend:
@@ -38,12 +38,12 @@ Make sure you have the following installed:
     Copy code
     
     `# Install frontend dependencies`
-    `cd frontend`
-   ` npm install`
+    `cd frontend` <br/>
+   ` npm install` <br />
     
     # Install backend dependencies
-    `cd ../backend`
-    `npm install`
+    `cd ../backend` <br/>
+    `npm install` <br/>
    
     
 

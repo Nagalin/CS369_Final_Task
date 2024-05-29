@@ -74,31 +74,17 @@ ORIGIN_URL  = your react url
 
     
 4.  Start the Express server:
-    
-    bash
-    
-    Copy code
-    
-    `node index.js
+    `node index.js`
     
     
 
 #### Frontend
 
 1.  Navigate to the `frontend` directory:
-    
-    bash
-    
-    Copy code
-    
+
     `cd frontend` 
     
 2.  Start the React development server:
-    
-    bash
-    
-    Copy code
-    
     `npm run dev
  
     By default, the React app will run on `http://localhost:3000`.

@@ -27,8 +27,8 @@ Make sure you have the following installed:
     
     Copy code
     
-    `git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name` 
+    `git clone https://github.com/Nagalin/CS369_Final_Task.git
+    CS369_Final_Task` 
     
 2.  Install dependencies for both the frontend and backend:
     

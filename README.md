@@ -1,4 +1,5 @@
 
+
 ## Overview
 
 This project is a full-stack web application with a React frontend, an Express backend and MSSQL database. The project structure is designed to separate the client-side and server-side code into distinct folders for better organization and maintainability.
@@ -27,8 +28,8 @@ Make sure you have the following installed:
     
     Copy code
     
-    `git clone https://github.com/Nagalin/CS369_Final_Task.git
-    cd CS369_Final_Task` 
+    `git clone https://github.com/Nagalin/CS369_Final_Task.git`
+    ` cd CS369_Final_Task` 
     
 2.  Install dependencies for both the frontend and backend:
     
@@ -36,13 +37,13 @@ Make sure you have the following installed:
     
     Copy code
     
-    `# Install frontend dependencies
-    cd frontend
-    npm install
+    `# Install frontend dependencies`
+    `cd frontend`
+   ` npm install`
     
     # Install backend dependencies
-    cd ../backend
-    npm install
+    `cd ../backend`
+    `npm install`
    
     
 

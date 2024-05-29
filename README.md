@@ -60,15 +60,15 @@ Make sure you have the following installed:
     `cd backend` 
 
     
-2.  Create a `.env` file in the `backend` directory and configure your environment variables as needed which will be
-PORT  = Your port number for express
-SERVER  =  your MSSQL server
-USER  =  your MSSQL username
-PASSWORD  =  your MSSQL password
-DATABASE  =  your MSSQL database
-ACCESS_TOKEN_KEY  = your secret key for signing access token
-REFRESH_TOKEN_KEY  =  your secret key for signing refresh token
-ORIGIN_URL  = your react url
+2.  Create a `.env` file in the `backend` directory and configure your environment variables as needed which will be <br />
+PORT  = Your port number for express <br />
+SERVER  =  your MSSQL server <br />
+USER  =  your MSSQL username <br />
+PASSWORD  =  your MSSQL password <br />
+DATABASE  =  your MSSQL database <br />
+ACCESS_TOKEN_KEY  = your secret key for signing access token <br />
+REFRESH_TOKEN_KEY  =  your secret key for signing refresh token <br />
+ORIGIN_URL  = your react url <br />
 
 3. `mkdir public` to create public folder for storing image 
 
